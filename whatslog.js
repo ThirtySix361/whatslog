@@ -4,7 +4,7 @@
 // all rights reserved to the owner of the code				//
 // // // // // // // // // // // // // // // // // // // // //
 
-var animationdelay = 200;
+var animationdelay = 300;
 var loopdelay = 1000;
 
 //	var name_element = document.getElementsByClassName("_19vo_")[0].innerText;
