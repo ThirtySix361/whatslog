@@ -7,13 +7,13 @@
 var animationdelay = 300;
 var loopdelay = 1000;
 
-//	var name_element = document.getElementsByClassName("_19vo_")[0].innerText;
-//	var status_element = document.getElementsByClassName("_3Q3ui")[0].innerText;
+//	var name_element = document.getElementsByClassName("_2FCjS")[0].innerText;
+//	var status_element = document.getElementsByClassName("_2ruUq")[0].innerText;
 
 // -------- styleshit --------
 var sheet = window.document.styleSheets[0];
 sheet.insertRule('#bar { z-index: 999; font-weight: bold; box-shadow: rgb(0, 0, 0) 0px 0px 2px 0px; background-color: rgb(0, 150, 136); color: #dbdbd3; font-size: 12px; line-height: 16px; }', sheet.cssRules.length);
-sheet.insertRule('#content { z-index: 999; overflow: auto; position: absolute; top: 270px; right: 10px; width: 240px; max-height: 60%; font-weight: bold; color: rgb(0, 150, 136); font-size: 12px; line-height: 12px; }', sheet.cssRules.length);
+sheet.insertRule('#content { z-index: 999; overflow: auto; position: absolute; top: 315px; right: 10px; width: 240px; max-height: 60%; font-weight: bold; color: rgb(0, 150, 136); font-size: 12px; line-height: 12px; }', sheet.cssRules.length);
 sheet.insertRule('#content_inner { margin: 10px 0px; padding: 10px; border-radius: 5px; box-shadow: rgb(0, 0, 0) 0px 0px 2px 0px; background-color: rgb(0, 150, 136); color: rgb(219, 219, 211); }', sheet.cssRules.length);
 sheet.insertRule('.btns { display: inline-block; margin: 0px 10px; padding: 5px; width: 40%; border: 1px solid #dbdbd3; border-radius: 5px; box-sizing: border-box; text-align: center; background-color: #dbdbd3; color: rgb(0, 150, 136);  }', sheet.cssRules.length);
 sheet.insertRule('.btns:hover { cursor: pointer; color: #dbdbd3; background-color: rgb(0, 150, 136); }', sheet.cssRules.length);
@@ -24,7 +24,7 @@ sheet.insertRule('hr:after { display: inline-block; position: relative; top: -7p
 // -------- wait for whatsapp --------
 var interval = setInterval(check, loopdelay); 
 function check() {
-	if ( document.getElementsByClassName("_3Q3ui")[0].innerText ) { // check if a state can be found
+	if ( document.getElementsByClassName("_2ruUq")[0].innerText ) { // check if a state can be found
 		clearInterval(interval); // end this loop
 		main(); // call the main function
 	} else {
@@ -41,7 +41,8 @@ function main() {
 		document.body.appendChild(btndiv); // add div to end of body
 		btndiv.id = 'bar'; // give it the id
 		btndiv.setAttribute('style', ' overflow: auto; position: absolute; top: 140px; right: 10px; width: 240px; border-radius: 5px;'); // add some lame css
-		btndiv.innerHTML = "<div style='display: block; padding-top: 10px; text-align: center; font-size: 20px;'> WhatsLog </div>"; // update content for div
+		btndiv.innerHTML = "<div style='display: block; padding-top: 10px; text-align: center; font-size: 20px;'> <a href='https://whatsonapp.de' target='_blank' style='color: orange;'> Try the new <br> WhatsOnApp </a> </div>"; // update content for div
+		btndiv.innerHTML += "<div style='display: block; padding-top: 10px; text-align: center; font-size: 20px;'> WhatsLog </div>"; // update content for div
 		btndiv.innerHTML += "<div style='display: block; padding-bottom: 10px; text-align: center; font-size: 10px;'> by ThirtySix </div>"; // update content for div
 		btndiv.innerHTML += "<div style='margin: 0 auto; width: 100%; text-align: center;'> <div class='btns' id='btnClear'>clear</div><div class='btns' id='btnCopy'>copy</div> </div>" // update content for div
 		btndiv.innerHTML += "<div style='margin: 0 auto; width: 100%; text-align: center;'> <div class='btns' id='btnFocus' style='margin: 10px auto; width: 90%;'>no focus set</div></div>"; // update content for div
@@ -59,8 +60,8 @@ function main() {
 	});
 	
 	document.getElementById("btnFocus").addEventListener("click", function(){ // add eventhandler
-		if ( document.getElementById("btnFocus")["innerText"] != document.getElementsByClassName("_19vo_")[0].innerText ) {
-			document.getElementById("btnFocus").innerHTML = document.getElementsByClassName("_19vo_")[0].innerText; // little fancy feedback
+		if ( document.getElementById("btnFocus")["innerText"] != document.getElementsByClassName("_2FCjS")[0].innerText ) {
+			document.getElementById("btnFocus").innerHTML = document.getElementsByClassName("_2FCjS")[0].innerText; // little fancy feedback
 			name = "";
 			status = "";
 		} else { 
@@ -98,17 +99,17 @@ function main() {
 	// -------- some functions --------
 	function getname() {
 		try {
-			var name = document.getElementsByClassName("_19vo_")[0].innerText;
+			var name = document.getElementsByClassName("_2FCjS")[0].innerText;
 		} catch (err) {
-			var name = "unbekannt";
+			var name = "unknown";
 		}
 		return name;
 	}
 	function getstatus() {
 		try {
-			var status = document.getElementsByClassName("_3Q3ui")[0].innerText;
+			var status = document.getElementsByClassName("_2ruUq")[0].innerText;
 		} catch (err) {
-			var status = "status verborgen";
+			var status = "status hidden";
 		}
 		return status;
 	}
