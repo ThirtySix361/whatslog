@@ -7,8 +7,8 @@
 var animationdelay = 300;
 var loopdelay = 1000;
 
-//	var name_element = document.getElementsByClassName("_2FCjS")[0].innerText;
-//	var status_element = document.getElementsByClassName("_2ruUq")[0].innerText;
+//	var name_element = document.getElementsByClassName("YEe1t")[0].innerText;
+//	var status_element = document.getElementsByClassName("_3Id9P")[0].innerText;
 
 // -------- styleshit --------
 var sheet = window.document.styleSheets[0];
@@ -24,7 +24,7 @@ sheet.insertRule('hr:after { display: inline-block; position: relative; top: -7p
 // -------- wait for whatsapp --------
 var interval = setInterval(check, loopdelay); 
 function check() {
-	if ( document.getElementsByClassName("_2ruUq")[0].innerText ) { // check if a state can be found
+	if ( document.getElementsByClassName("_3Id9P")[0].innerText ) { // check if a state can be found
 		clearInterval(interval); // end this loop
 		main(); // call the main function
 	} else {
@@ -60,8 +60,8 @@ function main() {
 	});
 	
 	document.getElementById("btnFocus").addEventListener("click", function(){ // add eventhandler
-		if ( document.getElementById("btnFocus")["innerText"] != document.getElementsByClassName("_2FCjS")[0].innerText ) {
-			document.getElementById("btnFocus").innerHTML = document.getElementsByClassName("_2FCjS")[0].innerText; // little fancy feedback
+		if ( document.getElementById("btnFocus")["innerText"] != document.getElementsByClassName("YEe1t")[0].innerText ) {
+			document.getElementById("btnFocus").innerHTML = document.getElementsByClassName("YEe1t")[0].innerText; // little fancy feedback
 			name = "";
 			status = "";
 		} else { 
@@ -99,7 +99,7 @@ function main() {
 	// -------- some functions --------
 	function getname() {
 		try {
-			var name = document.getElementsByClassName("_2FCjS")[0].innerText;
+			var name = document.getElementsByClassName("YEe1t")[0].innerText;
 		} catch (err) {
 			var name = "unknown";
 		}
@@ -107,7 +107,7 @@ function main() {
 	}
 	function getstatus() {
 		try {
-			var status = document.getElementsByClassName("_2ruUq")[0].innerText;
+			var status = document.getElementsByClassName("_3Id9P")[0].innerText;
 		} catch (err) {
 			var status = "status hidden";
 		}
