@@ -1,14 +1,17 @@
 // // // // // // // // // // // // // // // // // // // // //
 // this tool was developed by thirtysix						//
-// skype contact: xstyler36									//
+// discord contact: ThirtySix#7608							//
 // all rights reserved to the owner of the code				//
 // // // // // // // // // // // // // // // // // // // // //
 
 var animationdelay = 300;
 var loopdelay = 1000;
 
-//	var name_element = document.getElementsByClassName("YEe1t")[0].innerText;
-//	var status_element = document.getElementsByClassName("_3Id9P")[0].innerText;
+var name_query = "#main span[title]";
+var status_query = "#main span[title~='online']";
+
+// var name_query = document.querySelector("#main span[title]");
+// var status_query = document.querySelector("#main span[title~='online']");
 
 // -------- styleshit --------
 var sheet = window.document.styleSheets[0];
@@ -24,7 +27,7 @@ sheet.insertRule('hr:after { display: inline-block; position: relative; top: -7p
 // -------- wait for whatsapp --------
 var interval = setInterval(check, loopdelay); 
 function check() {
-	if ( document.getElementsByClassName("_3Id9P")[0].innerText ) { // check if a state can be found
+	if ( document.querySelector(status_query)?.innerText ) { // check if a state can be found
 		clearInterval(interval); // end this loop
 		main(); // call the main function
 	} else {
@@ -41,7 +44,7 @@ function main() {
 		document.body.appendChild(btndiv); // add div to end of body
 		btndiv.id = 'bar'; // give it the id
 		btndiv.setAttribute('style', ' overflow: auto; position: absolute; top: 140px; right: 10px; width: 240px; border-radius: 5px;'); // add some lame css
-		btndiv.innerHTML = "<div style='display: block; padding-top: 10px; text-align: center; font-size: 20px;'> <a href='https://whatsonapp.de' target='_blank' style='color: orange;'> Try the new <br> WhatsOnApp </a> </div>"; // update content for div
+		btndiv.innerHTML = "<div style='display: block; padding-top: 10px; text-align: center; font-size: 20px;'> <a href='https://whatsonapp.de?r=whatslog' target='_blank' style='color: orange;'> Try the new <br> WhatsOnApp </a> </div>"; // update content for div
 		btndiv.innerHTML += "<div style='display: block; padding-top: 10px; text-align: center; font-size: 20px;'> WhatsLog </div>"; // update content for div
 		btndiv.innerHTML += "<div style='display: block; padding-bottom: 10px; text-align: center; font-size: 10px;'> by ThirtySix </div>"; // update content for div
 		btndiv.innerHTML += "<div style='margin: 0 auto; width: 100%; text-align: center;'> <div class='btns' id='btnClear'>clear</div><div class='btns' id='btnCopy'>copy</div> </div>" // update content for div
@@ -50,18 +53,18 @@ function main() {
 	document.getElementById("btnClear").addEventListener("click", function(){ // add eventhandler
 		div.innerHTML = ""; // clear the content
 		document.getElementById("btnClear").innerHTML = "cleared"; // little fancy feedback
-		setTimeout ( ' document.getElementById("btnClear").innerHTML = "clear" ', animationdelay ); // little fancy feedback
+		setTimeout ( function(){ document.getElementById("btnClear").innerHTML = "clear" } , animationdelay ); // little fancy feedback
 	});
 	
 	document.getElementById("btnCopy").addEventListener("click", function(){ // add eventhandler
 		document.getElementById("btnCopy").innerHTML = "copied"; // little fancy feedback
-		setTimeout ( ' document.getElementById("btnCopy").innerHTML = "copy" ', animationdelay ); // little fancy feedback
+		setTimeout ( function(){ document.getElementById("btnCopy").innerHTML = "copy" } , animationdelay ); // little fancy feedback
 		setClipboardText(document.getElementById("content")["innerText"]);
 	});
 	
 	document.getElementById("btnFocus").addEventListener("click", function(){ // add eventhandler
-		if ( document.getElementById("btnFocus")["innerText"] != document.getElementsByClassName("YEe1t")[0].innerText ) {
-			document.getElementById("btnFocus").innerHTML = document.getElementsByClassName("YEe1t")[0].innerText; // little fancy feedback
+		if ( document.getElementById("btnFocus")["innerText"] != document.querySelector(name_query)?.innerText ) {
+			document.getElementById("btnFocus").innerHTML = document.querySelector(name_query)?.innerText; // little fancy feedback
 			name = "";
 			status = "";
 		} else { 
@@ -92,14 +95,19 @@ function main() {
 			document.getElementById("content").scrollTop = document.getElementById("content").scrollHeight; // scroll div to bottom
 			Object.defineProperty(document, "hidden", {value:false} ); // try to prevent losing connection
 		}
-		console.log("whatslog: checking whatsapp chat for changes.."); // spam the log
+		//console.log("whatslog: checking whatsapp chat for changes.."); // spam the log
 	}
 	// -------- -------- -------- --------
 	
 	// -------- some functions --------
 	function getname() {
 		try {
-			var name = document.getElementsByClassName("YEe1t")[0].innerText;
+			if ( document.querySelector(name_query)?.innerText ) {
+				var name = document.querySelector(name_query)?.innerText;	
+			} else {
+				var name = "unknown";
+			}
+			var name = document.querySelector(name_query)?.innerText;
 		} catch (err) {
 			var name = "unknown";
 		}
@@ -107,7 +115,11 @@ function main() {
 	}
 	function getstatus() {
 		try {
-			var status = document.getElementsByClassName("_3Id9P")[0].innerText;
+			if ( document.querySelector(status_query)?.innerText ) {
+				var status = document.querySelector(status_query)?.innerText;	
+			} else {
+				var status = "status hidden";
+			}
 		} catch (err) {
 			var status = "status hidden";
 		}
